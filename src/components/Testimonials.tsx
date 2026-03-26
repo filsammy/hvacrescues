@@ -5,38 +5,38 @@ import { Quote, Star } from 'lucide-react';
 
 const testimonials = [
   {
-    quote: "Thinking about upgrading your comfort? At HVAC RESCUE LLC, we specialize in brand-new HVAC installations designed to keep your home running efficiently year-round. Whether it’s a new build or a system replacement, we’ve got you covered with top-notch service and quality equipment.",
-    name: 'Walker County Resident',
-    location: 'Walker County, AL',
-    initials: 'WR',
+    quote: "Highly recommend!! You can expect honest hard work and transparent professionalism from Tyler! A company you can trust to take care of you and yours like he would his own!",
+    name: 'Samantha Dunaway Hamilton',
+    // location: 'Walker County, AL',
+    initials: 'SDH',
     rating: 5,
   },
   {
-    quote: "HVAC Problems? We’ve Got the Rescue! Is your AC struggling to keep up? Furnace not heating like it should? Don’t wait until it’s too late—HVAC issues only get worse. At HVAC RESCUE LLC, they pride themselves on fast, reliable service.",
-    name: 'Jasper Resident',
+    quote: "Tyler did an awesome job servicing and cleaning our unit and installed a new split unit for us . He is the best and I highly recommend him for your HVAC needs . Give him a call I promise you won’t regret it !",
+    name: 'Denise Bauer',
+    // location: 'Jasper, AL',
+    initials: 'DB',
+    rating: 5,
+  },
+  {
+    quote: "I highly recommend the prompt service, professional attitude, fair price we received from Tyler Souder of HVAC RESCUE LLC. Thanks again, Tyler!",
+    name: 'Jay Babcock',
+    // location: 'Walker County, AL',
+    initials: 'JB',
+    rating: 5,
+  },
+  {
+    quote: "Highly recommended Tyler! We had a Freon leak. Tyler came out and identified the leak, fixed it and everything is running good as new! Also will come out and perform yearly service on your unit.",
+    name: 'Joey Erkhart',
     location: 'Jasper, AL',
-    initials: 'JR',
+    initials: 'JE',
     rating: 5,
   },
   {
-    quote: "Choosing the right team makes all the difference. When comfort is on the line, trust the experts who put you first. HVAC Rescue LLC fixed our AC in no time!",
-    name: 'Jim Matthews',
-    location: 'Walker County, AL',
-    initials: 'JM',
-    rating: 5,
-  },
-  {
-    quote: "I recommend HVAC Rescue. They are punctual, informative and quick to answers your questions. I've also seen an immediate improvement with air quality since their visit. I plan on having them back to keep it that way.",
-    name: 'Francine T.',
-    location: 'Jasper, AL',
-    initials: 'FT',
-    rating: 5,
-  },
-  {
-    quote: "My first time having to call for HVAC service and I was recommended to HVAC rescue by a friend. They did an amazing job and took care of my problem quickly. Great customer service, will recommend to family and friends.",
-    name: 'Andrea R.',
-    location: 'Walker County, AL',
-    initials: 'AR',
+    quote: "This company came to my home and done an excellent job when my A/C was down! Tyler the owner was on time and very knowledgeable about my issue, he explained in detail about the repair and gave me an excellent price! Would recommend them to anyone.",
+    name: 'Jeremy Calvert',
+    // location: 'Walker County, AL',
+    initials: 'JC',
     rating: 5,
   },
 ];
@@ -86,7 +86,7 @@ export default function Testimonials() {
               </div>
               <div>
                 <p className="font-bold text-lg">{testimonials[0].name}</p>
-                <p className="text-blue-200 text-sm">{testimonials[0].location}</p>
+                {/* <p className="text-blue-200 text-sm">{testimonials[0].location}</p> */}
               </div>
             </div>
           </motion.div>

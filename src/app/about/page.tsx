@@ -4,26 +4,26 @@ import { motion } from 'framer-motion';
 import { Users, Heart, ShieldCheck, Award } from 'lucide-react';
 import Image from 'next/image';
 
-const teamMembers = [
-  {
-    name: 'Jaeson Fuentes',
-    role: 'Lead Technician',
-    bio: 'Jaeson is a licensed HVAC technician with 5 years of field experience. He specializes in residential and commercial HVAC services, including AC repair, heating maintenance, and air quality management.',
-    initials: 'JF',
-  },
-  {
-    name: 'Eugene Nguyen',
-    role: 'Director of Operations',
-    bio: 'Eugene has 8 years experience in the HVAC industry and an extensive professional history in the service sector. He ensures all installations and repairs meet our high standards of quality and efficiency.',
-    initials: 'EN',
-  },
-  {
-    name: 'Harold Jones, Sr.',
-    role: 'Service Manager',
-    bio: 'Harold has 30 years experience in the HVAC industry. He understands the intricacies of all major system brands and guarantees that your comfort is restored quickly. From heat pumps to furnaces, Harold is the HVAC whisperer.',
-    initials: 'HJ',
-  },
-];
+// const teamMembers = [
+//   {
+//     name: 'Jaeson Fuentes',
+//     role: 'Lead Technician',
+//     bio: 'Jaeson is a licensed HVAC technician with 5 years of field experience. He specializes in residential and commercial HVAC services, including AC repair, heating maintenance, and air quality management.',
+//     initials: 'JF',
+//   },
+//   {
+//     name: 'Eugene Nguyen',
+//     role: 'Director of Operations',
+//     bio: 'Eugene has 8 years experience in the HVAC industry and an extensive professional history in the service sector. He ensures all installations and repairs meet our high standards of quality and efficiency.',
+//     initials: 'EN',
+//   },
+//   {
+//     name: 'Harold Jones, Sr.',
+//     role: 'Service Manager',
+//     bio: 'Harold has 30 years experience in the HVAC industry. He understands the intricacies of all major system brands and guarantees that your comfort is restored quickly. From heat pumps to furnaces, Harold is the HVAC whisperer.',
+//     initials: 'HJ',
+//   },
+// ];
 
 export default function AboutPage() {
   return (
@@ -93,7 +93,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-24 bg-gray-50 border-t border-gray-100">
+      {/* <section className="py-24 bg-gray-50 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-[var(--color-accent)] font-bold tracking-wider uppercase text-sm mb-2">Our Team</h2>
@@ -122,7 +122,7 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Values / Mission */}
       <section className="py-20 bg-[var(--color-primary)] text-white text-center">

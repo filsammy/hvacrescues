@@ -11,8 +11,8 @@ const trustFeatures = [
   },
   {
     icon: Clock,
-    title: 'Available 24/7',
-    description: 'When emergencies strike, our experts are ready 24/7 to rescue your home\'s comfort.',
+    title: 'Placeholder',
+    description: 'Placeholder',
   },
   {
     icon: CreditCard,

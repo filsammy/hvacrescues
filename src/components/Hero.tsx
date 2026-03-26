@@ -1,11 +1,61 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Phone, ShieldCheck, Award, ThumbsUp } from 'lucide-react';
+import { Phone, CheckCircle, ShieldCheck, Award, ThumbsUp } from 'lucide-react';
+
+const hvacOptions = [
+  { value: 'General HVAC Repair', label: 'General HVAC' },
+  { value: 'AC Repair / Install', label: 'AC Repair/Install' },
+  { value: 'Furnace / Heating', label: 'Furnace/Heating' },
+  { value: 'Maintenance', label: 'Maintenance' },
+  { value: 'Ductwork', label: 'Ductwork' },
+  { value: 'Air Quality', label: 'Air Quality' },
+  { value: 'Emergency Support', label: 'Emergency' },
+  { value: 'Other', label: 'Other' },
+];
 
 export default function Hero() {
+  const [formData, setFormData] = useState({ name: '', phone: '', email: '', message: '' });
+  const [selectedPests, setSelectedPests] = useState<string[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const togglePest = (value: string) => {
+    setSelectedPests((prev) => prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          ...formData, 
+          pestTypes: selectedPests,
+          message: `[HERO FORM] ${formData.message}` 
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', phone: '', email: '', message: '' });
+        setSelectedPests([]);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="relative text-white overflow-hidden py-20 lg:py-32">
       {/* Video Background */}
@@ -78,15 +128,109 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative w-full aspect-video flex items-center justify-center rounded-2xl p-8 lg:p-12">
-              <Image
-                src="/images/transparent-bg.png"
-                alt="HVAC Rescue LLC Logo"
-                width={800}
-                height={400}
-                className="w-full h-auto object-contain drop-shadow-[0_10px_35px_rgba(0,0,0,0.5)]"
-                priority
-              />
+            <div className="relative w-full rounded-2xl p-8 lg:p-10 bg-white shadow-2xl text-gray-900 border border-white/20">
+              <h3 className="text-2xl font-extrabold mb-2 text-[var(--color-primary)]">Get a Free Estimate</h3>
+              <p className="text-gray-600 mb-6 text-sm">Schedule your service in seconds.</p>
+
+              {submitStatus === 'success' ? (
+                <div className="h-64 flex flex-col items-center justify-center text-center space-y-4">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-2">
+                    <CheckCircle className="h-8 w-8" />
+                  </div>
+                  <h4 className="text-2xl font-bold text-[var(--color-primary)]">Request Sent!</h4>
+                  <p className="text-gray-600 text-sm">We'll contact you shortly.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Full Name *"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[var(--color-accent)] focus:border-[var(--color-accent)] outline-none transition-all placeholder-gray-400"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="tel"
+                      required
+                      placeholder="Phone Number *"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[var(--color-accent)] focus:border-[var(--color-accent)] outline-none transition-all placeholder-gray-400"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="email"
+                      placeholder="Email Address"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[var(--color-accent)] focus:border-[var(--color-accent)] outline-none transition-all placeholder-gray-400"
+                    />
+                  </div>
+                  
+                  {/* System Issue Checkboxes */}
+                  <div>
+                    <label className="block text-sm font-bold text-gray-800 mb-2">System Issue(s)</label>
+                    <div className="grid grid-cols-2 gap-2">
+                      {hvacOptions.map((option) => (
+                        <label
+                          key={option.value}
+                          className={`flex items-center gap-2 px-2 py-2 rounded cursor-pointer transition-all text-xs font-medium border ${selectedPests.includes(option.value)
+                            ? 'bg-blue-50 border-[var(--color-primary)] text-[var(--color-primary)] ring-1 ring-[var(--color-primary)]'
+                            : 'bg-white border-gray-200 text-gray-600 hover:border-gray-400'
+                            }`}
+                        >
+                          <input
+                            type="checkbox"
+                            className="sr-only"
+                            checked={selectedPests.includes(option.value)}
+                            onChange={() => togglePest(option.value)}
+                          />
+                          <span className={`flex-shrink-0 w-3 h-3 rounded flex items-center justify-center border ${selectedPests.includes(option.value)
+                            ? 'bg-[var(--color-primary)] border-[var(--color-primary)]'
+                            : 'border-gray-300 bg-white'
+                            }`}>
+                            {selectedPests.includes(option.value) && (
+                              <svg className="w-2 h-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
+                            )}
+                          </span>
+                          {option.label}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Message Field */}
+                  <div>
+                    <textarea
+                      name="message"
+                      rows={2}
+                      placeholder="Message Details..."
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[var(--color-accent)] focus:border-[var(--color-accent)] outline-none transition-all resize-none placeholder-gray-400"
+                    ></textarea>
+                  </div>
+                  
+                  {submitStatus === 'error' && (
+                    <div className="p-3 bg-red-50 text-red-600 rounded flex text-sm font-bold">
+                      Error sending request. Please call us.
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-bold text-lg py-4 px-8 rounded-lg transition-all shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? 'Sending Request...' : 'Schedule Service'}
+                  </button>
+                </form>
+              )}
             </div>
           </motion.div>
 
