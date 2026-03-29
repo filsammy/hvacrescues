@@ -15,8 +15,43 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HVAC Rescue LLC",
-  description: "Fast & reliable HVAC pros in Walker and Cullman Counties, AL. We handle repairs & installs with expert care.",
+  title: {
+    default: "HVAC Rescue LLC | Trusted HVAC Repair & Installation in Walker & Cullman Counties, AL",
+    template: "%s | HVAC Rescue LLC",
+  },
+  description: "Fast & reliable HVAC repair, replacement, and maintenance in Walker and Cullman Counties, Alabama. Licensed pros, same-day service, free estimates. Call 205-471-9474.",
+  keywords: [
+    "HVAC repair Jasper AL",
+    "HVAC installation Walker County",
+    "AC repair Cullman County",
+    "furnace repair Alabama",
+    "HVAC maintenance Jasper Alabama",
+    "air conditioning Jasper AL",
+    "HVAC contractor Walker County AL",
+    "emergency HVAC repair",
+    "ductwork repair Alabama",
+    "indoor air quality Jasper",
+  ],
+  authors: [{ name: "HVAC Rescue LLC" }],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "HVAC Rescue LLC",
+    title: "HVAC Rescue LLC | Trusted HVAC Pros in Walker & Cullman Counties, AL",
+    description: "Fast & reliable HVAC repair, replacement, and maintenance. Licensed pros, same-day service, free estimates. Call 205-471-9474.",
+    images: [{ url: "/images/bg-dark.jpg", width: 1200, height: 630, alt: "HVAC Rescue LLC" }],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
