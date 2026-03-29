@@ -4,6 +4,7 @@ import Services from "@/components/Services";
 import TrustSection from "@/components/TrustSection";
 import Testimonials from "@/components/Testimonials";
 import ContactSection from "@/components/ContactSection";
+import Gallery from "@/components/Gallery";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <PainPoints />
       <Services />
       <TrustSection />
+      <Gallery />
       <Testimonials />
       <ContactSection />
     </>

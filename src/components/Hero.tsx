@@ -21,6 +21,7 @@ export default function Hero() {
   const [selectedPests, setSelectedPests] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [honeypot, setHoneypot] = useState('');
 
   const togglePest = (value: string) => {
     setSelectedPests((prev) => prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]);
@@ -35,10 +36,11 @@ export default function Hero() {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          ...formData, 
+        body: JSON.stringify({
+          ...formData,
           pestTypes: selectedPests,
-          message: `[HERO FORM] ${formData.message}` 
+          message: `${formData.message}`,
+          website: honeypot,
         }),
       });
 
@@ -81,11 +83,11 @@ export default function Hero() {
             className="space-y-8 text-center lg:text-left"
           >
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
-              Walker County's Most <span className="text-[var(--color-accent)]">Reliable</span> HVAC Pros
+              Your <span className="text-[var(--color-accent)]">Reliable</span> HVAC Pros of Walker and Cullman Counties
             </h1>
 
             <p className="text-xl text-gray-200 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              We handle HVAC repairs, & installs with expert care. Fix it right the first time, keep you comfy all year, and never overcharge.
+              We handle HVAC repairs & installations with expert care. Fix it right the first time, keep you comfy all year, and never overcharge.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -152,6 +154,17 @@ export default function Hero() {
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[var(--color-accent)] focus:border-[var(--color-accent)] outline-none transition-all placeholder-gray-400"
                     />
                   </div>
+                  {/* Honeypot — hidden from real users */}
+                  <div className="absolute opacity-0 -z-10 h-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
+                    <input
+                      type="text"
+                      name="website"
+                      autoComplete="off"
+                      tabIndex={-1}
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                    />
+                  </div>
                   <div>
                     <input
                       type="tel"
@@ -171,7 +184,7 @@ export default function Hero() {
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[var(--color-accent)] focus:border-[var(--color-accent)] outline-none transition-all placeholder-gray-400"
                     />
                   </div>
-                  
+
                   {/* System Issue Checkboxes */}
                   <div>
                     <label className="block text-sm font-bold text-gray-800 mb-2">System Issue(s)</label>
@@ -215,7 +228,7 @@ export default function Hero() {
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[var(--color-accent)] focus:border-[var(--color-accent)] outline-none transition-all resize-none placeholder-gray-400"
                     ></textarea>
                   </div>
-                  
+
                   {submitStatus === 'error' && (
                     <div className="p-3 bg-red-50 text-red-600 rounded flex text-sm font-bold">
                       Error sending request. Please call us.
@@ -227,7 +240,7 @@ export default function Hero() {
                     disabled={isSubmitting}
                     className="w-full bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-bold text-lg py-4 px-8 rounded-lg transition-all shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    {isSubmitting ? 'Sending Request...' : 'Schedule Service'}
+                    {isSubmitting ? 'Sending Request...' : 'Submit'}
                   </button>
                 </form>
               )}

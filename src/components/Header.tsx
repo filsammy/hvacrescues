@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, Menu, X } from 'lucide-react';
+import { Phone, Menu, X, Facebook } from 'lucide-react';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
@@ -54,6 +54,10 @@ export default function Header() {
 
           {/* Desktop CTA & Phone */}
           <div className="hidden md:flex items-center space-x-6">
+            <Link href="https://www.facebook.com/profile.php/?id=61562969425101" target="_blank" rel="noopener noreferrer" className="text-blue-100 hover:text-white bg-white/10 hover:bg-[var(--color-accent)] p-2 rounded-md transition-colors">
+              <span className="sr-only">Facebook</span>
+              <Facebook className="h-5 w-5" />
+            </Link>
             <a href="tel:2054719474" className="flex items-center text-white font-bold text-lg hover:text-[var(--color-accent)]">
               <Phone className="h-5 w-5 mr-2 text-[var(--color-accent)]" />
               205-471-9474
@@ -102,7 +106,11 @@ export default function Header() {
             ))}
           </div>
           <div className="pt-4 pb-4 border-t border-gray-100 mb-2">
-            <div className="flex items-center justify-center px-4">
+            <div className="flex items-center justify-center space-x-6 px-4">
+              <Link href="https://www.facebook.com/profile.php/?id=61562969425101" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:text-white bg-blue-50 hover:bg-[var(--color-accent)] p-2 rounded-md transition-colors">
+                <span className="sr-only">Facebook</span>
+                <Facebook className="h-6 w-6" />
+              </Link>
               <a href="tel:2054719474" className="flex items-center text-[var(--color-primary)] font-bold text-lg">
                 <Phone className="h-5 w-5 mr-2" />
                 205-471-9474

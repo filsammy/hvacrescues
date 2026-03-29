@@ -19,6 +19,7 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [selectedPests, setSelectedPests] = useState<string[]>([]);
+  const [honeypot, setHoneypot] = useState('');
 
   const togglePest = (value: string) => {
     setSelectedPests((prev) =>
@@ -44,7 +45,7 @@ export default function ContactSection() {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, website: honeypot }),
       });
 
       if (response.ok) {
@@ -168,6 +169,18 @@ export default function ContactSection() {
                   />
                 </div>
 
+                {/* Honeypot — hidden from real users */}
+                <div className="absolute opacity-0 -z-10 h-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
+                  <input
+                    type="text"
+                    name="website"
+                    autoComplete="off"
+                    tabIndex={-1}
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                  />
+                </div>
+
                 {/* System Issue Checkboxes */}
                 <div>
                   <label className="block text-sm font-bold text-gray-800 mb-3">System Issue(s) — Select all that apply</label>
@@ -223,7 +236,7 @@ export default function ContactSection() {
                     disabled={isSubmitting}
                     className="w-full bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-bold text-lg py-4 px-8 rounded-lg transition-all shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    {isSubmitting ? 'Sending Request...' : 'Schedule Service'}
+                    {isSubmitting ? 'Sending Request...' : 'Submit'}
                   </button>
                   {/* <p className="text-center text-gray-500 text-sm mt-4">No commitment required. 100% free inspection.</p> */}
                 </div>

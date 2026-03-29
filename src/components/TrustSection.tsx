@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ThumbsUp, Clock, CreditCard } from 'lucide-react';
+import { ThumbsUp, CreditCard, ShieldCheck } from 'lucide-react';
 
 const trustFeatures = [
   {
@@ -10,9 +10,9 @@ const trustFeatures = [
     description: 'We pride ourselves on fast, reliable, and honest service without any hidden costs.',
   },
   {
-    icon: Clock,
-    title: 'Placeholder',
-    description: 'Placeholder',
+    icon: ShieldCheck,
+    title: 'Guaranteed Quality',
+    description: 'Our licensed technicians deliver top-tier workmanship backed by a 100% satisfaction guarantee on every job.',
   },
   {
     icon: CreditCard,

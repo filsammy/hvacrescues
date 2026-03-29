@@ -40,7 +40,7 @@ export default function AboutPage() {
             About <span className="text-[var(--color-accent)]">HVAC Rescue LLC</span>
           </motion.h1>
           <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-            Fast &amp; reliable HVAC pros serving Walker County, AL with pride. Fix it right the first time, keep you comfy all year.
+            Fast &amp; reliable HVAC pros serving Walker and Cullman Counties, AL with pride. Fix it right the first time, keep you comfy all year.
           </p>
         </div>
       </section>
@@ -76,7 +76,7 @@ export default function AboutPage() {
               </h3>
               <div className="space-y-4 text-gray-700 text-lg leading-relaxed">
                 <p>
-                  We handle HVAC, repairs, &amp; installs with expert care. We fix it right the first time, keep you comfy all year, and never overcharge. Your comfort is our mission!
+                  We handle HVAC repairs & installations with expert care. Fix it right the first time, keep you comfy all year, and never overcharge.
                 </p>
                 <p>
                   <strong>Our List of Services:</strong> HVAC repair, replacement, maintenance, indoor air quality, duct deodorization, ductwork repair, ductwork replacement, and duct sealing.

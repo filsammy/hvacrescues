@@ -116,7 +116,7 @@ export default function ServicesPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className={`flex flex-col lg:flex-row gap-12 items-center ${
+              className={`flex flex-col lg:flex-row gap-12 items-center scroll-mt-32 md:scroll-mt-[25vh] ${
                 index % 2 !== 0 ? 'lg:flex-row-reverse' : ''
               }`}
             >
@@ -143,7 +143,7 @@ export default function ServicesPage() {
                   href="/#contact"
                   className="inline-block bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white px-8 py-3 rounded-md font-bold transition-colors shadow-md"
                 >
-                  Get a Free Quote
+                  Book a Service
                 </Link>
               </div>
             </motion.div>

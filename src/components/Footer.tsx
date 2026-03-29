@@ -2,13 +2,13 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Facebook, Twitter, Phone, Mail, MapPin } from 'lucide-react';
+import { Facebook, Phone, Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
   return (
     <footer className="bg-[var(--color-primary)] text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
 
           {/* Brand & Description */}
           <div className="space-y-4">
@@ -22,21 +22,17 @@ export default function Footer() {
               />
             </Link>
             <p className="text-blue-100 text-sm leading-relaxed">
-              Fast &amp; reliable HVAC pros in Walker County, AL. Your comfort is our mission trust HVAC Rescue LLC for all your HVAC needs.
+              Fast &amp; reliable HVAC pros in Walker County, AL. Your comfort is our mission — trust HVAC Rescue LLC for all your HVAC needs.
             </p>
             <div className="flex space-x-4 pt-2">
-              <Link href="#" target="_blank" rel="noopener noreferrer" className="text-blue-200 hover:text-white transition-colors">
+              <Link href="https://www.facebook.com/profile.php/?id=61562969425101" target="_blank" rel="noopener noreferrer" className="text-blue-200 hover:text-white bg-white/10 hover:bg-[var(--color-accent)] p-2 rounded-md transition-colors">
                 <span className="sr-only">Facebook</span>
-                <Facebook className="h-6 w-6" />
-              </Link>
-              <Link href="#" target="_blank" rel="noopener noreferrer" className="text-blue-200 hover:text-white transition-colors">
-                <span className="sr-only">Twitter</span>
-                <Twitter className="h-6 w-6" />
+                <Facebook className="h-5 w-5" />
               </Link>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Services Links */}
           <div className="space-y-4">
             <h4 className="text-lg font-semibold uppercase tracking-wider text-white">Our Services</h4>
             <ul className="space-y-2">
@@ -75,30 +71,13 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter / BBB */}
-          <div className="space-y-6">
-            <div>
-              <h4 className="text-lg font-semibold uppercase tracking-wider text-white mb-4">Subscribe</h4>
-              <p className="text-sm text-blue-100 mb-3">Get seasonal tips &amp; offers — enter your email</p>
-              <form className="flex" onSubmit={(e) => e.preventDefault()}>
-                <input
-                  type="email"
-                  placeholder="Email address"
-                  className="px-4 py-2 w-full text-gray-900 bg-white border-2 border-white/80 rounded-l-md focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] placeholder-gray-500"
-                />
-                <button type="submit" className="bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] px-4 py-2 rounded-r-md transition-colors font-medium text-white">
-                  Join
-                </button>
-              </form>
-            </div>
-          </div>
         </div>
 
         <div className="border-t border-white/10 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center text-sm text-blue-200">
           <p>© {new Date().getFullYear()} HVAC Rescue LLC. All rights reserved.</p>
           <div className="mt-4 md:mt-0 space-x-4">
-            <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

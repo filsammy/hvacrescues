@@ -59,7 +59,7 @@ export default function Testimonials() {
         </div>
 
         {/* Featured Testimonial */}
-        <div className="grid md:grid-cols-12 gap-12 items-center mb-16">
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
 
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -92,7 +92,7 @@ export default function Testimonials() {
           </motion.div>
 
           {/* Google Reviews Badge */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -116,7 +116,7 @@ export default function Testimonials() {
               </div>
               <p className="text-gray-500 text-sm">Based on 100+ reviews</p>
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         {/* Additional Review Cards Grid */}

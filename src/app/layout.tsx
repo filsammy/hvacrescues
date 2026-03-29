@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HVAC Rescue LLC | Walker County's Most Trusted HVAC Pros",
-  description: "Fast & reliable HVAC pros in Walker County, AL. We handle repairs & installs with expert care.",
+  title: "HVAC Rescue LLC",
+  description: "Fast & reliable HVAC pros in Walker and Cullman Counties, AL. We handle repairs & installs with expert care.",
 };
 
 export default function RootLayout({
