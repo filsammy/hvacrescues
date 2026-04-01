@@ -12,49 +12,49 @@ const services: {
   bgImage: string;
   description: string;
 }[] = [
-  {
-    id: 'hvac-repair',
-    title: 'HVAC Repair',
-    icon: Wrench,
-    bgImage: '/assets/furnace_repair.png',
-    description: 'Fast, reliable fixes to get your system running efficiently.',
-  },
-  {
-    id: 'hvac-replacement',
-    title: 'HVAC Replacement',
-    icon: Settings,
-    bgImage: '/assets/furnace_replacement.png',
-    description: 'Brand-new HVAC installations built for comfort & reliability.',
-  },
-  {
-    id: 'hvac-maintenance',
-    title: 'HVAC Maintenance',
-    icon: Activity,
-    bgImage: '/assets/heatpump_repair.png',
-    description: 'Regular checkups to ensure optimal performance year-round.',
-  },
-  {
-    id: 'indoor-air-quality',
-    title: 'Indoor Air Quality',
-    icon: Wind,
-    bgImage: '/assets/pexels-jose-andres-pacheco-cortes-3641213-5463580.jpg',
-    description: 'Advanced solutions to keep the air you breathe clean and safe.',
-  },
-  {
-    id: 'duct-deodorization',
-    title: 'Duct Deodorization',
-    icon: Fan,
-    bgImage: '/assets/heatpump_replacement.png',
-    description: 'Clear out smells and freshen the air flowing through your home.',
-  },
-  {
-    id: 'ductwork',
-    title: 'Ductwork Repair & Sealing',
-    icon: CheckCircle,
-    bgImage: '/assets/ductwork.png',
-    description: 'Seal leaks and fix ductwork to save energy and improve airflow.',
-  },
-];
+    {
+      id: 'hvac-repair',
+      title: 'HVAC Repair',
+      icon: Wrench,
+      bgImage: '/assets/furnace_repair.png',
+      description: 'Fast, reliable fixes to get your system running efficiently.',
+    },
+    {
+      id: 'hvac-replacement',
+      title: 'HVAC Replacement',
+      icon: Settings,
+      bgImage: '/assets/furnace_replacement.png',
+      description: 'Brand-new HVAC installations built for comfort & reliability.',
+    },
+    {
+      id: 'hvac-maintenance',
+      title: 'HVAC Maintenance',
+      icon: Activity,
+      bgImage: '/assets/heatpump_repair.png',
+      description: 'Regular checkups to ensure optimal performance year-round.',
+    },
+    {
+      id: 'indoor-air-quality',
+      title: 'Indoor Air Quality',
+      icon: Wind,
+      bgImage: '/assets/pexels-jose-andres-pacheco-cortes-3641213-5463580.jpg',
+      description: 'Advanced solutions to keep the air you breathe clean and safe.',
+    },
+    {
+      id: 'duct-deodorization',
+      title: 'Duct Deodorization',
+      icon: Fan,
+      bgImage: '/assets/heatpump_replacement.png',
+      description: 'Clear out smells and freshen the air flowing through your home.',
+    },
+    {
+      id: 'ductwork',
+      title: 'Ductwork Repair & Sealing',
+      icon: CheckCircle,
+      bgImage: '/assets/ductwork.png',
+      description: 'Seal leaks and fix ductwork to save energy and improve airflow.',
+    },
+  ];
 
 export default function Services() {
   return (
@@ -96,7 +96,7 @@ export default function Services() {
                   className="object-cover"
                   aria-hidden="true"
                 />
-                <div className="absolute inset-0 bg-white/65 group-hover:bg-[var(--color-primary)]/85 transition-colors duration-300" />
+                <div className="absolute inset-0 bg-white/85 group-hover:bg-[var(--color-primary)]/85 transition-colors duration-300" />
               </div>
 
               {/* Content */}
