@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Phone, CheckCircle, ShieldCheck, Award, ThumbsUp } from 'lucide-react';
@@ -27,8 +27,16 @@ export default function Hero() {
     setSelectedPests((prev) => prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]);
   };
 
+  // Track last submit time to debounce rapid clicks (400ms cooldown)
+  const lastSubmitRef = useRef(0);
+
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault(); // Must fire immediately — cannot be inside a debounce delay
+
+    const now = Date.now();
+    if (isSubmitting || now - lastSubmitRef.current < 400) return;
+    lastSubmitRef.current = now;
+
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
@@ -83,11 +91,11 @@ export default function Hero() {
             className="space-y-8 text-center lg:text-left"
           >
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
-              Your <span className="text-[var(--color-accent)]">Reliable</span> HVAC Pros of Walker and Cullman Counties
+              Your <span className="text-[var(--color-accent)]">Reliable</span> HVAC Pros of Jasper, AL
             </h1>
 
             <p className="text-xl text-gray-200 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              We handle HVAC repairs & installations with expert care. Fix it right the first time, keep you comfy all year, and never overcharge.
+              We handle HVAC repairs and installations across Walker County & Cullman County
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">

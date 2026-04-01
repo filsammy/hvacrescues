@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Wrench, Settings, Activity, Wind, Fan, CheckCircle } from 'lucide-react';
 
 const services = [
@@ -9,6 +10,7 @@ const services = [
     id: 'hvac-repair',
     title: 'HVAC Repair',
     icon: Wrench,
+    image: '/assets/furnace_repair.png',
     shortDescription: 'Fast, reliable fixes to get your system running efficiently.',
     details: [
       'Diagnostics and troubleshooting',
@@ -22,6 +24,7 @@ const services = [
     id: 'hvac-replacement',
     title: 'HVAC Replacement',
     icon: Settings,
+    image: '/assets/furnace_replacement.png',
     shortDescription: 'Brand-new HVAC installations built for comfort & reliability.',
     details: [
       'Complete system changeouts',
@@ -35,6 +38,7 @@ const services = [
     id: 'hvac-maintenance',
     title: 'HVAC Maintenance',
     icon: Activity,
+    image: '/assets/heatpump_repair.png',
     shortDescription: 'Regular checkups to ensure optimal performance year-round.',
     details: [
       'Bi-annual tune-ups',
@@ -48,6 +52,7 @@ const services = [
     id: 'indoor-air-quality',
     title: 'Indoor Air Quality',
     icon: Wind,
+    image: '/assets/pexels-jose-andres-pacheco-cortes-3641213-5463580.jpg',
     shortDescription: 'Advanced solutions to keep the air you breathe clean and safe.',
     details: [
       'Air purifiers and scrubbers',
@@ -61,6 +66,7 @@ const services = [
     id: 'duct-deodorization',
     title: 'Duct Deodorization',
     icon: Fan,
+    image: '/assets/heatpump_replacement.png',
     shortDescription: 'Clear out smells and freshen the air flowing through your home.',
     details: [
       'Eliminates stale and musty odors',
@@ -74,6 +80,7 @@ const services = [
     id: 'ductwork',
     title: 'Ductwork Repair & Sealing',
     icon: CheckCircle,
+    image: '/assets/ductwork.png',
     shortDescription: 'Seal leaks and fix ductwork to save energy and improve airflow.',
     details: [
       'Mastic sealing and metal taping',
@@ -120,10 +127,15 @@ export default function ServicesPage() {
                 index % 2 !== 0 ? 'lg:flex-row-reverse' : ''
               }`}
             >
-              {/* Icon Panel */}
+              {/* Image Panel */}
               <div className="lg:w-2/5 flex justify-center">
-                <div className="w-48 h-48 rounded-3xl bg-blue-50 flex items-center justify-center shadow-lg">
-                  <service.icon className="h-24 w-24 text-[var(--color-primary)]" />
+                <div className="relative w-full max-w-sm aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border border-gray-100">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
               </div>
 

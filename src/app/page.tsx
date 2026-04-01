@@ -66,10 +66,10 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Hero />
+      <Gallery />
       <PainPoints />
       <Services />
       <TrustSection />
-      <Gallery />
       <Testimonials />
       <ContactSection />
     </>

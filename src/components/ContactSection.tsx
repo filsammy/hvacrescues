@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, CheckCircle } from 'lucide-react';
 
@@ -27,8 +27,16 @@ export default function ContactSection() {
     );
   };
 
+  // Track last submit timestamp — prevents double-submit on rapid clicks (400ms cooldown)
+  const lastSubmitRef = useRef(0);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault(); // Must fire immediately — cannot be inside a debounce delay
+
+    const now = Date.now();
+    if (isSubmitting || now - lastSubmitRef.current < 400) return;
+    lastSubmitRef.current = now;
+
     setIsSubmitting(true);
     setSubmitStatus('idle');
 

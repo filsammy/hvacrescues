@@ -85,7 +85,11 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true, mocked: true });
     }
 
-    const { error } = await resend.emails.send({
+    // NOTE: Until hvacrescuellc.com is verified in the Resend dashboard,
+    // the 'from' must use 'onboarding@resend.dev' AND 'to' must be the
+    // email address tied to your Resend account (not an arbitrary Gmail).
+    // Once the domain is verified, change 'from' to e.g. noreply@hvacrescuellc.com
+    const { data: sendData, error } = await resend.emails.send({
       from: 'HVAC Rescue Website <onboarding@resend.dev>',
       to: ['hvacrescues@gmail.com'],
       replyTo: (data.email && isValidEmail(data.email)) ? data.email : undefined,
@@ -125,8 +129,12 @@ export async function POST(request: Request) {
     });
 
     if (error) {
+      // Log full Resend error to the server terminal for easier debugging
+      console.error('[Resend Error]', JSON.stringify(error, null, 2));
       return NextResponse.json({ error: error.message }, { status: 400 });
     }
+
+    console.log('[Resend] Email sent successfully. ID:', sendData?.id);
 
     return NextResponse.json({ success: true });
   } catch {
